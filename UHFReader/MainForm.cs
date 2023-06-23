@@ -22,6 +22,7 @@ namespace UHFReader
     {
         //全局变量(global variable)
         hComSocket CS;                  //通信句柄结构体(connect handle struct)
+        static DateTime timeCheck = DateTime.Now;
 
         int hCom = -1;			        //串口句柄(comm handle)
 
@@ -1146,7 +1147,13 @@ namespace UHFReader
             int m_anten2_dbm = 0;
             int m_anten3_dbm = 0;
             int m_anten4_dbm = 0;
-
+            if (ANTALLDBM_checkBox.Checked)
+            {
+                ANT1_textBox.Text = ANTALLDBM_textBox.Text;
+                ANT2_textBox.Text = ANTALLDBM_textBox.Text;
+                ANT3_textBox.Text = ANTALLDBM_textBox.Text;
+                ANT4_textBox.Text = ANTALLDBM_textBox.Text;
+            }
             m_anten1_dbm = Convert.ToInt32(ANT1_textBox.Text);
             m_anten2_dbm = Convert.ToInt32(ANT2_textBox.Text);
             m_anten3_dbm = Convert.ToInt32(ANT3_textBox.Text);
@@ -3048,7 +3055,7 @@ namespace UHFReader
             else
                 ListBoxAdd(TempStrEnglish);
 
-            if (rbtnShowView.Checked)
+            if (ckBoxView.Checked)
             {
                 ViewNotify viewShow = new ViewNotify();
                 viewShow.ShowDialog();
@@ -3333,7 +3340,7 @@ namespace UHFReader
             }
 
             status = rfid_sp.GEN2_MultiTagInventory(CS, ref TagCount, 0xFF);
-            if (TagCount == 0)
+            if (TagCount == 0 && timeCheck > DateTime.Now.AddSeconds(AppSettings.TimeHoldEpcPerSec))
             {
                 CLEARSHOWDATA_button_Click(null, null);
                 ViewNotify.ListEpc.Clear();
@@ -3376,6 +3383,7 @@ namespace UHFReader
                                         flg = i;
                                        
                                         AddValueInDic(ViewNotify.ListEpc, EPC, 1);
+
                                     }
                                 }
                                 if (flg < 0)
@@ -3385,6 +3393,8 @@ namespace UHFReader
                                     ViewNotify.ListEpc.Add(EPC, 1);
                                 }
                             }
+                            timeCheck = DateTime.Now;
+
                         } // for each item
                     } // if Get buffer success
 
@@ -3842,6 +3852,28 @@ namespace UHFReader
             time = string.Format("{0:D}", OperTime);
             TIME_label.Text = time;
         }
+
+        private void ANTALLDBM_checkBox_CheckedChanged(object sender, EventArgs e)
+        {
+
+                ANT1_textBox.Enabled = !ANTALLDBM_checkBox.Checked;
+                ANT2_textBox.Enabled = !ANTALLDBM_checkBox.Checked;
+                ANT3_textBox.Enabled = !ANTALLDBM_checkBox.Checked;
+                ANT4_textBox.Enabled = !ANTALLDBM_checkBox.Checked;
+            
+        }
+
+        private void ANTALL_checkBox_CheckedChanged(object sender, EventArgs e)
+        {
+
+            ANT1_checkBox.Checked = ANTALL_checkBox.Checked;
+            ANT2_checkBox.Checked = ANTALL_checkBox.Checked;
+            ANT3_checkBox.Checked = ANTALL_checkBox.Checked;
+            ANT4_checkBox.Checked = ANTALL_checkBox.Checked;
+
+        }
+
+        
 
         void IsHexOrNot(KeyPressEventArgs e)
         {

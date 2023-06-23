@@ -11,6 +11,7 @@ namespace UHFReader
     {
         public static int AccessEpcPerCount => Convert.ToInt32(ConfigurationManager.AppSettings["AccessEpcPerCount"]);
         public static int RejectEpcPerCount => Convert.ToInt32(ConfigurationManager.AppSettings["RejectEpcPerCount"]);
+        public static int TimeHoldEpcPerSec => Convert.ToInt32(ConfigurationManager.AppSettings["TimeHoldEpcPerSec"]);
 
     }
 }

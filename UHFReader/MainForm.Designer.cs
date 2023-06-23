@@ -244,7 +244,11 @@
             this.EPC_MultiTagRead_timer = new System.Windows.Forms.Timer(this.components);
             this.EPC_MultiTagWrite_timer = new System.Windows.Forms.Timer(this.components);
             this.EPC_OperationTime_timer = new System.Windows.Forms.Timer(this.components);
-            this.rbtnShowView = new System.Windows.Forms.RadioButton();
+            this.label17 = new System.Windows.Forms.Label();
+            this.ANTALLDBM_textBox = new System.Windows.Forms.TextBox();
+            this.ANTALLDBM_checkBox = new System.Windows.Forms.CheckBox();
+            this.ANTALL_checkBox = new System.Windows.Forms.CheckBox();
+            this.ckBoxView = new System.Windows.Forms.CheckBox();
             this.groupBox1.SuspendLayout();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
@@ -1074,6 +1078,9 @@
             // 
             // groupBox4
             // 
+            this.groupBox4.Controls.Add(this.ANTALLDBM_checkBox);
+            this.groupBox4.Controls.Add(this.label17);
+            this.groupBox4.Controls.Add(this.ANTALLDBM_textBox);
             this.groupBox4.Controls.Add(this.GETRFPWR_button);
             this.groupBox4.Controls.Add(this.label10);
             this.groupBox4.Controls.Add(this.SETRFPWR_button);
@@ -1139,7 +1146,7 @@
             this.label11.Name = "label11";
             this.label11.Size = new System.Drawing.Size(38, 13);
             this.label11.TabIndex = 9;
-            this.label11.Text = "ANT1:";
+            this.label11.Text = "ANT4:";
             // 
             // label8
             // 
@@ -1165,7 +1172,7 @@
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(38, 13);
             this.label9.TabIndex = 6;
-            this.label9.Text = "ANT1:";
+            this.label9.Text = "ANT3:";
             // 
             // label5
             // 
@@ -1191,7 +1198,7 @@
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(38, 13);
             this.label7.TabIndex = 3;
-            this.label7.Text = "ANT1:";
+            this.label7.Text = "ANT2:";
             // 
             // label6
             // 
@@ -1221,6 +1228,8 @@
             // 
             // groupBox3
             // 
+            this.groupBox3.Controls.Add(this.ANT1_checkBox);
+            this.groupBox3.Controls.Add(this.ANTALL_checkBox);
             this.groupBox3.Controls.Add(this.GETANTENNA_button);
             this.groupBox3.Controls.Add(this.SETANTENNA_button);
             this.groupBox3.Controls.Add(this.ANT4_pictureBox);
@@ -1230,7 +1239,6 @@
             this.groupBox3.Controls.Add(this.ANT2_pictureBox);
             this.groupBox3.Controls.Add(this.ANT2_checkBox);
             this.groupBox3.Controls.Add(this.ANT1_pictureBox);
-            this.groupBox3.Controls.Add(this.ANT1_checkBox);
             this.groupBox3.Location = new System.Drawing.Point(7, 4);
             this.groupBox3.Name = "groupBox3";
             this.groupBox3.Size = new System.Drawing.Size(632, 104);
@@ -1240,7 +1248,7 @@
             // 
             // GETANTENNA_button
             // 
-            this.GETANTENNA_button.Location = new System.Drawing.Point(435, 68);
+            this.GETANTENNA_button.Location = new System.Drawing.Point(471, 67);
             this.GETANTENNA_button.Name = "GETANTENNA_button";
             this.GETANTENNA_button.Size = new System.Drawing.Size(75, 25);
             this.GETANTENNA_button.TabIndex = 9;
@@ -1250,7 +1258,7 @@
             // 
             // SETANTENNA_button
             // 
-            this.SETANTENNA_button.Location = new System.Drawing.Point(95, 68);
+            this.SETANTENNA_button.Location = new System.Drawing.Point(133, 67);
             this.SETANTENNA_button.Name = "SETANTENNA_button";
             this.SETANTENNA_button.Size = new System.Drawing.Size(75, 25);
             this.SETANTENNA_button.TabIndex = 8;
@@ -1261,7 +1269,7 @@
             // ANT4_pictureBox
             // 
             this.ANT4_pictureBox.Image = global::UHFReader.Properties.Resources.NoSingle;
-            this.ANT4_pictureBox.Location = new System.Drawing.Point(520, 20);
+            this.ANT4_pictureBox.Location = new System.Drawing.Point(559, 20);
             this.ANT4_pictureBox.Name = "ANT4_pictureBox";
             this.ANT4_pictureBox.Size = new System.Drawing.Size(37, 36);
             this.ANT4_pictureBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
@@ -1271,7 +1279,7 @@
             // ANT4_checkBox
             // 
             this.ANT4_checkBox.AutoSize = true;
-            this.ANT4_checkBox.Location = new System.Drawing.Point(462, 30);
+            this.ANT4_checkBox.Location = new System.Drawing.Point(501, 30);
             this.ANT4_checkBox.Name = "ANT4_checkBox";
             this.ANT4_checkBox.Size = new System.Drawing.Size(54, 17);
             this.ANT4_checkBox.TabIndex = 6;
@@ -1281,7 +1289,7 @@
             // ANT3_pictureBox
             // 
             this.ANT3_pictureBox.Image = global::UHFReader.Properties.Resources.NoSingle;
-            this.ANT3_pictureBox.Location = new System.Drawing.Point(391, 20);
+            this.ANT3_pictureBox.Location = new System.Drawing.Point(430, 20);
             this.ANT3_pictureBox.Name = "ANT3_pictureBox";
             this.ANT3_pictureBox.Size = new System.Drawing.Size(37, 36);
             this.ANT3_pictureBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
@@ -1291,7 +1299,7 @@
             // ANT3_checkBox
             // 
             this.ANT3_checkBox.AutoSize = true;
-            this.ANT3_checkBox.Location = new System.Drawing.Point(333, 30);
+            this.ANT3_checkBox.Location = new System.Drawing.Point(372, 30);
             this.ANT3_checkBox.Name = "ANT3_checkBox";
             this.ANT3_checkBox.Size = new System.Drawing.Size(54, 17);
             this.ANT3_checkBox.TabIndex = 4;
@@ -1301,7 +1309,7 @@
             // ANT2_pictureBox
             // 
             this.ANT2_pictureBox.Image = global::UHFReader.Properties.Resources.NoSingle;
-            this.ANT2_pictureBox.Location = new System.Drawing.Point(262, 20);
+            this.ANT2_pictureBox.Location = new System.Drawing.Point(301, 20);
             this.ANT2_pictureBox.Name = "ANT2_pictureBox";
             this.ANT2_pictureBox.Size = new System.Drawing.Size(37, 36);
             this.ANT2_pictureBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
@@ -1311,7 +1319,7 @@
             // ANT2_checkBox
             // 
             this.ANT2_checkBox.AutoSize = true;
-            this.ANT2_checkBox.Location = new System.Drawing.Point(204, 30);
+            this.ANT2_checkBox.Location = new System.Drawing.Point(243, 30);
             this.ANT2_checkBox.Name = "ANT2_checkBox";
             this.ANT2_checkBox.Size = new System.Drawing.Size(54, 17);
             this.ANT2_checkBox.TabIndex = 2;
@@ -1321,7 +1329,7 @@
             // ANT1_pictureBox
             // 
             this.ANT1_pictureBox.Image = global::UHFReader.Properties.Resources.NoSingle;
-            this.ANT1_pictureBox.Location = new System.Drawing.Point(133, 20);
+            this.ANT1_pictureBox.Location = new System.Drawing.Point(172, 20);
             this.ANT1_pictureBox.Name = "ANT1_pictureBox";
             this.ANT1_pictureBox.Size = new System.Drawing.Size(37, 36);
             this.ANT1_pictureBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
@@ -1331,7 +1339,7 @@
             // ANT1_checkBox
             // 
             this.ANT1_checkBox.AutoSize = true;
-            this.ANT1_checkBox.Location = new System.Drawing.Point(75, 30);
+            this.ANT1_checkBox.Location = new System.Drawing.Point(114, 30);
             this.ANT1_checkBox.Name = "ANT1_checkBox";
             this.ANT1_checkBox.Size = new System.Drawing.Size(54, 17);
             this.ANT1_checkBox.TabIndex = 0;
@@ -2074,7 +2082,7 @@
             // 
             // SHOWDATA_groupBox
             // 
-            this.SHOWDATA_groupBox.Controls.Add(this.rbtnShowView);
+            this.SHOWDATA_groupBox.Controls.Add(this.ckBoxView);
             this.SHOWDATA_groupBox.Controls.Add(this.CLEARSHOWDATA_button);
             this.SHOWDATA_groupBox.Controls.Add(this.SPEED_comboBox);
             this.SHOWDATA_groupBox.Controls.Add(this.SPEED_label);
@@ -2719,16 +2727,54 @@
             this.EPC_OperationTime_timer.Interval = 1000;
             this.EPC_OperationTime_timer.Tick += new System.EventHandler(this.EPC_OperationTime_timer_Tick);
             // 
-            // rbtnShowView
+            // label17
             // 
-            this.rbtnShowView.AutoSize = true;
-            this.rbtnShowView.Location = new System.Drawing.Point(533, 56);
-            this.rbtnShowView.Name = "rbtnShowView";
-            this.rbtnShowView.Size = new System.Drawing.Size(77, 17);
-            this.rbtnShowView.TabIndex = 21;
-            this.rbtnShowView.TabStop = true;
-            this.rbtnShowView.Text = "Open View";
-            this.rbtnShowView.UseVisualStyleBackColor = true;
+            this.label17.AutoSize = true;
+            this.label17.Location = new System.Drawing.Point(346, 60);
+            this.label17.Name = "label17";
+            this.label17.Size = new System.Drawing.Size(28, 13);
+            this.label17.TabIndex = 14;
+            this.label17.Text = "dBm";
+            // 
+            // ANTALLDBM_textBox
+            // 
+            this.ANTALLDBM_textBox.Location = new System.Drawing.Point(281, 57);
+            this.ANTALLDBM_textBox.Name = "ANTALLDBM_textBox";
+            this.ANTALLDBM_textBox.Size = new System.Drawing.Size(59, 20);
+            this.ANTALLDBM_textBox.TabIndex = 13;
+            this.ANTALLDBM_textBox.Text = "0";
+            // 
+            // ANTALLDBM_checkBox
+            // 
+            this.ANTALLDBM_checkBox.AutoSize = true;
+            this.ANTALLDBM_checkBox.Location = new System.Drawing.Point(204, 59);
+            this.ANTALLDBM_checkBox.Name = "ANTALLDBM_checkBox";
+            this.ANTALLDBM_checkBox.Size = new System.Drawing.Size(73, 17);
+            this.ANTALLDBM_checkBox.TabIndex = 10;
+            this.ANTALLDBM_checkBox.Text = "ANT-ALL:";
+            this.ANTALLDBM_checkBox.UseVisualStyleBackColor = true;
+            this.ANTALLDBM_checkBox.CheckedChanged += new System.EventHandler(this.ANTALLDBM_checkBox_CheckedChanged);
+            // 
+            // ANTALL_checkBox
+            // 
+            this.ANTALL_checkBox.AutoSize = true;
+            this.ANTALL_checkBox.Location = new System.Drawing.Point(33, 30);
+            this.ANTALL_checkBox.Name = "ANTALL_checkBox";
+            this.ANTALL_checkBox.Size = new System.Drawing.Size(70, 17);
+            this.ANTALL_checkBox.TabIndex = 10;
+            this.ANTALL_checkBox.Text = "ANT-ALL";
+            this.ANTALL_checkBox.UseVisualStyleBackColor = true;
+            this.ANTALL_checkBox.CheckedChanged += new System.EventHandler(this.ANTALL_checkBox_CheckedChanged);
+            // 
+            // ckBoxView
+            // 
+            this.ckBoxView.AutoSize = true;
+            this.ckBoxView.Location = new System.Drawing.Point(526, 56);
+            this.ckBoxView.Name = "ckBoxView";
+            this.ckBoxView.Size = new System.Drawing.Size(75, 17);
+            this.ckBoxView.TabIndex = 36;
+            this.ckBoxView.Text = "OpenView";
+            this.ckBoxView.UseVisualStyleBackColor = true;
             // 
             // MainForm
             // 
@@ -3017,7 +3063,11 @@
         private System.Windows.Forms.Timer EPC_MultiTagWrite_timer;
         private System.Windows.Forms.Timer EPC_OperationTime_timer;
         private System.Windows.Forms.ComboBox LOCKMEMBANK_comboBox;
-        private System.Windows.Forms.RadioButton rbtnShowView;
+        private System.Windows.Forms.Label label17;
+        private System.Windows.Forms.TextBox ANTALLDBM_textBox;
+        private System.Windows.Forms.CheckBox ANTALLDBM_checkBox;
+        private System.Windows.Forms.CheckBox ANTALL_checkBox;
+        private System.Windows.Forms.CheckBox ckBoxView;
     }
 }
 
