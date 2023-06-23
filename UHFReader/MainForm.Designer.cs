@@ -106,6 +106,9 @@
             this.IPADDR_textBox = new System.Windows.Forms.TextBox();
             this.IPADDR_label = new System.Windows.Forms.Label();
             this.groupBox4 = new System.Windows.Forms.GroupBox();
+            this.ANTALLDBM_checkBox = new System.Windows.Forms.CheckBox();
+            this.label17 = new System.Windows.Forms.Label();
+            this.ANTALLDBM_textBox = new System.Windows.Forms.TextBox();
             this.GETRFPWR_button = new System.Windows.Forms.Button();
             this.label10 = new System.Windows.Forms.Label();
             this.SETRFPWR_button = new System.Windows.Forms.Button();
@@ -121,6 +124,8 @@
             this.ANT1_textBox = new System.Windows.Forms.TextBox();
             this.ANT1_label = new System.Windows.Forms.Label();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
+            this.ANT1_checkBox = new System.Windows.Forms.CheckBox();
+            this.ANTALL_checkBox = new System.Windows.Forms.CheckBox();
             this.GETANTENNA_button = new System.Windows.Forms.Button();
             this.SETANTENNA_button = new System.Windows.Forms.Button();
             this.ANT4_pictureBox = new System.Windows.Forms.PictureBox();
@@ -130,7 +135,6 @@
             this.ANT2_pictureBox = new System.Windows.Forms.PictureBox();
             this.ANT2_checkBox = new System.Windows.Forms.CheckBox();
             this.ANT1_pictureBox = new System.Windows.Forms.PictureBox();
-            this.ANT1_checkBox = new System.Windows.Forms.CheckBox();
             this.ISO180006B_tabPage = new System.Windows.Forms.TabPage();
             this.UNIQUETAG_groupBox = new System.Windows.Forms.GroupBox();
             this.QUERYLOCK_button = new System.Windows.Forms.Button();
@@ -190,6 +194,7 @@
             this.SECREAD_radioButton = new System.Windows.Forms.RadioButton();
             this.MULTITAG_groupBox = new System.Windows.Forms.GroupBox();
             this.SHOWDATA_groupBox = new System.Windows.Forms.GroupBox();
+            this.ckBoxView = new System.Windows.Forms.CheckBox();
             this.CLEARSHOWDATA_button = new System.Windows.Forms.Button();
             this.SPEED_comboBox = new System.Windows.Forms.ComboBox();
             this.SPEED_label = new System.Windows.Forms.Label();
@@ -244,11 +249,6 @@
             this.EPC_MultiTagRead_timer = new System.Windows.Forms.Timer(this.components);
             this.EPC_MultiTagWrite_timer = new System.Windows.Forms.Timer(this.components);
             this.EPC_OperationTime_timer = new System.Windows.Forms.Timer(this.components);
-            this.label17 = new System.Windows.Forms.Label();
-            this.ANTALLDBM_textBox = new System.Windows.Forms.TextBox();
-            this.ANTALLDBM_checkBox = new System.Windows.Forms.CheckBox();
-            this.ANTALL_checkBox = new System.Windows.Forms.CheckBox();
-            this.ckBoxView = new System.Windows.Forms.CheckBox();
             this.groupBox1.SuspendLayout();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
@@ -1102,6 +1102,35 @@
             this.groupBox4.TabStop = false;
             this.groupBox4.Text = "功率";
             // 
+            // ANTALLDBM_checkBox
+            // 
+            this.ANTALLDBM_checkBox.AutoSize = true;
+            this.ANTALLDBM_checkBox.Location = new System.Drawing.Point(204, 59);
+            this.ANTALLDBM_checkBox.Name = "ANTALLDBM_checkBox";
+            this.ANTALLDBM_checkBox.Size = new System.Drawing.Size(73, 17);
+            this.ANTALLDBM_checkBox.TabIndex = 10;
+            this.ANTALLDBM_checkBox.Text = "ANT-ALL:";
+            this.ANTALLDBM_checkBox.UseVisualStyleBackColor = true;
+            this.ANTALLDBM_checkBox.CheckedChanged += new System.EventHandler(this.ANTALLDBM_checkBox_CheckedChanged);
+            // 
+            // label17
+            // 
+            this.label17.AutoSize = true;
+            this.label17.Location = new System.Drawing.Point(346, 60);
+            this.label17.Name = "label17";
+            this.label17.Size = new System.Drawing.Size(28, 13);
+            this.label17.TabIndex = 14;
+            this.label17.Text = "dBm";
+            // 
+            // ANTALLDBM_textBox
+            // 
+            this.ANTALLDBM_textBox.Enabled = false;
+            this.ANTALLDBM_textBox.Location = new System.Drawing.Point(281, 57);
+            this.ANTALLDBM_textBox.Name = "ANTALLDBM_textBox";
+            this.ANTALLDBM_textBox.Size = new System.Drawing.Size(59, 20);
+            this.ANTALLDBM_textBox.TabIndex = 13;
+            this.ANTALLDBM_textBox.Text = "0";
+            // 
             // GETRFPWR_button
             // 
             this.GETRFPWR_button.Location = new System.Drawing.Point(435, 57);
@@ -1246,6 +1275,27 @@
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "天线工作状态";
             // 
+            // ANT1_checkBox
+            // 
+            this.ANT1_checkBox.AutoSize = true;
+            this.ANT1_checkBox.Location = new System.Drawing.Point(114, 30);
+            this.ANT1_checkBox.Name = "ANT1_checkBox";
+            this.ANT1_checkBox.Size = new System.Drawing.Size(54, 17);
+            this.ANT1_checkBox.TabIndex = 0;
+            this.ANT1_checkBox.Text = "ANT1";
+            this.ANT1_checkBox.UseVisualStyleBackColor = true;
+            // 
+            // ANTALL_checkBox
+            // 
+            this.ANTALL_checkBox.AutoSize = true;
+            this.ANTALL_checkBox.Location = new System.Drawing.Point(33, 30);
+            this.ANTALL_checkBox.Name = "ANTALL_checkBox";
+            this.ANTALL_checkBox.Size = new System.Drawing.Size(70, 17);
+            this.ANTALL_checkBox.TabIndex = 10;
+            this.ANTALL_checkBox.Text = "ANT-ALL";
+            this.ANTALL_checkBox.UseVisualStyleBackColor = true;
+            this.ANTALL_checkBox.CheckedChanged += new System.EventHandler(this.ANTALL_checkBox_CheckedChanged);
+            // 
             // GETANTENNA_button
             // 
             this.GETANTENNA_button.Location = new System.Drawing.Point(471, 67);
@@ -1335,16 +1385,6 @@
             this.ANT1_pictureBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
             this.ANT1_pictureBox.TabIndex = 1;
             this.ANT1_pictureBox.TabStop = false;
-            // 
-            // ANT1_checkBox
-            // 
-            this.ANT1_checkBox.AutoSize = true;
-            this.ANT1_checkBox.Location = new System.Drawing.Point(114, 30);
-            this.ANT1_checkBox.Name = "ANT1_checkBox";
-            this.ANT1_checkBox.Size = new System.Drawing.Size(54, 17);
-            this.ANT1_checkBox.TabIndex = 0;
-            this.ANT1_checkBox.Text = "ANT1";
-            this.ANT1_checkBox.UseVisualStyleBackColor = true;
             // 
             // ISO180006B_tabPage
             // 
@@ -2102,6 +2142,16 @@
             this.SHOWDATA_groupBox.TabStop = false;
             this.SHOWDATA_groupBox.Text = "数据显示";
             // 
+            // ckBoxView
+            // 
+            this.ckBoxView.AutoSize = true;
+            this.ckBoxView.Location = new System.Drawing.Point(526, 56);
+            this.ckBoxView.Name = "ckBoxView";
+            this.ckBoxView.Size = new System.Drawing.Size(75, 17);
+            this.ckBoxView.TabIndex = 36;
+            this.ckBoxView.Text = "OpenView";
+            this.ckBoxView.UseVisualStyleBackColor = true;
+            // 
             // CLEARSHOWDATA_button
             // 
             this.CLEARSHOWDATA_button.Location = new System.Drawing.Point(525, 249);
@@ -2726,55 +2776,6 @@
             // 
             this.EPC_OperationTime_timer.Interval = 1000;
             this.EPC_OperationTime_timer.Tick += new System.EventHandler(this.EPC_OperationTime_timer_Tick);
-            // 
-            // label17
-            // 
-            this.label17.AutoSize = true;
-            this.label17.Location = new System.Drawing.Point(346, 60);
-            this.label17.Name = "label17";
-            this.label17.Size = new System.Drawing.Size(28, 13);
-            this.label17.TabIndex = 14;
-            this.label17.Text = "dBm";
-            // 
-            // ANTALLDBM_textBox
-            // 
-            this.ANTALLDBM_textBox.Location = new System.Drawing.Point(281, 57);
-            this.ANTALLDBM_textBox.Name = "ANTALLDBM_textBox";
-            this.ANTALLDBM_textBox.Size = new System.Drawing.Size(59, 20);
-            this.ANTALLDBM_textBox.TabIndex = 13;
-            this.ANTALLDBM_textBox.Text = "0";
-            // 
-            // ANTALLDBM_checkBox
-            // 
-            this.ANTALLDBM_checkBox.AutoSize = true;
-            this.ANTALLDBM_checkBox.Location = new System.Drawing.Point(204, 59);
-            this.ANTALLDBM_checkBox.Name = "ANTALLDBM_checkBox";
-            this.ANTALLDBM_checkBox.Size = new System.Drawing.Size(73, 17);
-            this.ANTALLDBM_checkBox.TabIndex = 10;
-            this.ANTALLDBM_checkBox.Text = "ANT-ALL:";
-            this.ANTALLDBM_checkBox.UseVisualStyleBackColor = true;
-            this.ANTALLDBM_checkBox.CheckedChanged += new System.EventHandler(this.ANTALLDBM_checkBox_CheckedChanged);
-            // 
-            // ANTALL_checkBox
-            // 
-            this.ANTALL_checkBox.AutoSize = true;
-            this.ANTALL_checkBox.Location = new System.Drawing.Point(33, 30);
-            this.ANTALL_checkBox.Name = "ANTALL_checkBox";
-            this.ANTALL_checkBox.Size = new System.Drawing.Size(70, 17);
-            this.ANTALL_checkBox.TabIndex = 10;
-            this.ANTALL_checkBox.Text = "ANT-ALL";
-            this.ANTALL_checkBox.UseVisualStyleBackColor = true;
-            this.ANTALL_checkBox.CheckedChanged += new System.EventHandler(this.ANTALL_checkBox_CheckedChanged);
-            // 
-            // ckBoxView
-            // 
-            this.ckBoxView.AutoSize = true;
-            this.ckBoxView.Location = new System.Drawing.Point(526, 56);
-            this.ckBoxView.Name = "ckBoxView";
-            this.ckBoxView.Size = new System.Drawing.Size(75, 17);
-            this.ckBoxView.TabIndex = 36;
-            this.ckBoxView.Text = "OpenView";
-            this.ckBoxView.UseVisualStyleBackColor = true;
             // 
             // MainForm
             // 
