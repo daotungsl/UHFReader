@@ -13,6 +13,7 @@ namespace UHFReader
         public static Label lblLpnVeh;
         public static Button btnDoneFuel;
         public static Timer timeProgess;
-        public static Timer timeVehOut;
+        public static Timer timeVehOut; 
+        public static Panel plnLpn; 
     }
 }

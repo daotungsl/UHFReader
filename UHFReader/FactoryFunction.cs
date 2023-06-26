@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Drawing;
 using System.IO;
 using System.Linq;
 using System.Text;
@@ -66,7 +67,30 @@ namespace UHFReader
                 return 1;
             }
         }
-        
+        public static void SetColorPanel(Panel panel, object color)
+        {
+            try
+            {
+                if (panel != null)
+                {
+                    if (panel.InvokeRequired)
+                    {
+                        panel.BeginInvoke((MethodInvoker)delegate
+                        {
+                            panel.BackColor = (Color)color;
+                        });
+                    }
+                    else
+                    {
+                        panel.BackColor = (Color)color;
+                    }
+                }
+            }
+            catch (Exception)
+            {
+
+            }
+        }
         public static void SetTextLable(Label label, string text)
         {
             try
@@ -115,7 +139,7 @@ namespace UHFReader
 
             }
         }
-        public static string StringToMoney(string money,string separator)
+        public static string StringToMoney(string money, string separator)
         {
             money = money.Replace(",00", "");
             StringBuilder stringBuilder = new StringBuilder(money);

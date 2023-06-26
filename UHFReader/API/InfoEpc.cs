@@ -2,6 +2,7 @@
 using RestSharp;
 using System;
 using System.Collections.Generic;
+using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -26,14 +27,21 @@ namespace UHFReader.API
                 RestResponse response = await client.ExecuteAsync(request);
                 Console.WriteLine(response.Content);
                 infoEpcResponse = JsonConvert.DeserializeObject<InfoEpcResponse>(response.Content);
-                if (infoEpcResponse != null )
+                if (infoEpcResponse != null && infoEpcResponse.status == "1")
                 {
                     FactoryFunction.SetTextLable(CostGlobal.lblName, "Xin chào " + infoEpcResponse.cust_name);
                     FactoryFunction.SetTextLable(CostGlobal.lblLpnVeh, infoEpcResponse.plate);
                     FactoryFunction.SetVisibleButton(CostGlobal.btnDoneFuel, true);
-                    CostGlobal.timeProgess.Enabled = false;
-                    CostGlobal.timeVehOut.Enabled = true;
                 }
+                else
+                {
+                    FactoryFunction.SetTextLable(CostGlobal.lblName, infoEpcResponse.message);
+                    FactoryFunction.SetTextLable(CostGlobal.lblLpnVeh, infoEpcResponse.error_code);
+                    FactoryFunction.SetTextLable(CostGlobal.lblLpnVeh, infoEpcResponse.error_code); 
+                    FactoryFunction.SetColorPanel(CostGlobal.plnLpn, Color.FromArgb(204, 51, 0)); 
+                }
+                CostGlobal.timeProgess.Enabled = false;
+                CostGlobal.timeVehOut.Enabled = true;
             }
             catch (Exception)
             {
@@ -72,5 +80,9 @@ namespace UHFReader.API
         public string status { get; set; }
         public string vehicle_type { get; set; }
         public string mig_object_id { get; set; }
+        public string stack_trace { get; set; }
+        public string error_code { get; set; }
+        public string message { get; set; }
+        public string timestamp { get; set; }
     }
 }

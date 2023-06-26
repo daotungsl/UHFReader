@@ -51,7 +51,8 @@ namespace UHFReader
             CostGlobal.lblLpnVeh = lblLpnVeh; 
             CostGlobal.btnDoneFuel = btnDoneFuel; 
             CostGlobal.timeProgess = timeProgess; 
-            CostGlobal.timeVehOut = timeVehOut;
+            CostGlobal.timeVehOut = timeVehOut; 
+            CostGlobal.plnLpn = plnLpn; 
 
         }
         #endregion
@@ -227,8 +228,8 @@ namespace UHFReader
         private void button1_Click(object sender, EventArgs e)
         {
             //await new InfoEpc().InfoEpcApi("8930110002060900FFBCEC45");
-            string[] ArEPC = new string[] { "8930110002060900FFBCEC45", "3416214B886A650004773230", };
-            string EPC = ArEPC[new Random().Next(0, 2)];
+            string[] ArEPC = new string[] { "8930110002060900FFBCEC45", "3416214B886A650004773230", "3416214B883D590005342651" };
+            string EPC = ArEPC[new Random().Next(0, 3)];
 
             //string EPC = "3416214B886A650004773230";
             if (ListEpc != null && ListEpc.Count == 0)
