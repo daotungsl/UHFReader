@@ -7,8 +7,10 @@ using System.Linq;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
+using System.Web.UI.WebControls;
 using System.Windows.Forms;
 using DLL;
+using UHFReader.API;
 
 namespace UHFReader
 {
@@ -19,6 +21,7 @@ namespace UHFReader
         bool isEpcIn = true;
         bool isBlink = true;
         int isOut = 0;
+        bool isCheckIn;
         static DateTime timeCheck = DateTime.Now;
         int Language;
         RFID_StandardProtocol rfid_sp = new RFID_StandardProtocol();
@@ -27,8 +30,21 @@ namespace UHFReader
         public ViewNotify()
         {
             InitializeComponent();
-        }
+            SetIteamForGlobal();
+            new LoginApi().Login();
 
+        }
+        #region[Set Varible Global]
+        private void SetIteamForGlobal()
+        {
+            CostGlobal.lblName = lblName;
+            CostGlobal.lblLpnVeh = lblLpnVeh; 
+            CostGlobal.btnDoneFuel = btnDoneFuel; 
+            CostGlobal.timeProgess = timeProgess; 
+            CostGlobal.timeVehOut = timeVehOut;
+
+        }
+        #endregion
         private void CertificationForm_Load(object sender, EventArgs e)
         {
 
@@ -52,7 +68,7 @@ namespace UHFReader
             DialogResult = DialogResult.Abort;
         }
 
-        private void timeProgess_Tick(object sender, EventArgs e)
+        private async void timeProgess_Tick(object sender, EventArgs e)
         {
             if (isEpcIn)
             {
@@ -67,24 +83,29 @@ namespace UHFReader
                     lblName.Text = "Đang kiểm tra tài khoản \n" + epcInlane.ToUpper();
                     EpcInprogess = epcInlane;
                     timeCheck = DateTime.Now;
+                    button2.Visible = true;
 
                 }
                 else if (EpcInprogess == "")
                 {
+                    isCheckIn = false;
                     lblName.Text = "";
                     lblLpnVeh.Text = "SẴN SÀNG";
                     plnLpn.BackColor = Color.FromArgb(153, 195, 48);
                     btnDoneFuel.Visible = false;
+                    button2.Visible = false;
 
                 }
-                else if (DateTime.Now > timeCheck.AddSeconds(2))
+                else if ((DateTime.Now > timeCheck.AddSeconds(1))&&(isCheckIn == false))
                 {
+                    isCheckIn = true;
                     plnLpn.BackColor = Color.FromArgb(255, 204, 0);
-                    if (CheckInEpc(epcInlane))
-                    {
-                        timeProgess.Enabled = false;
-                        timeVehOut.Enabled = true;
-                    }
+                   await new InfoEpc().InfoEpcApi(EpcInprogess);
+                    //if (CheckInEpc(epcInlane))
+                    //{
+                    //    timeProgess.Enabled = false;
+                    //    timeVehOut.Enabled = true;
+                    //}
                 }
 
                 if (lblLpnVeh.Text == "XE ĐÃ VÀO")
@@ -124,21 +145,48 @@ namespace UHFReader
         }
 
 
-        private bool CheckInEpc(string epc)
-        {
-            lblName.Text = "Xin chào " + "PHẠM NGỌC HOÀI";
-            lblLpnVeh.Text = "38A-344.23";
-            btnDoneFuel.Visible = true;
-            return true;
-        }
-        private void CheckOutEpc(string epc)
+        //private bool CheckInEpc(string epc)
+        //{
+           
+
+        //}
+        private async void CheckOutEpc(string epc)
         {
             lblName.Text = "Đang tiến hành thành toán.";
+            int transId = FactoryFunction.GetLastId();
+
+            PaymentRequest paymentRequest = new PaymentRequest();
+            paymentRequest.plate = InfoEpc.infoEpcResponse.plate.Replace("-","");
+            paymentRequest.etag = epc;
+            paymentRequest.plxId = "PLX001";
+            paymentRequest.transId = $"PLXTRANS{transId:D3}";
+            paymentRequest.token = "RajX5cI2GLcKJYGjewXhXffYheNfG6465y/Y2H0O4/ZWUKTkh7XiiAdka1eABgvRqNES78+8ftdKDZg/fn/FQ0t9AP5+NJ3aD28U4Mi1ccf/kf7lckrWsWbdt7wUfKNTKoMvarC4mVUMDUTglVxIAzOlti7PCY2JO+KE8bPhmgM=";
+            paymentRequest.amount = "200000";
+            paymentRequest.terminalId = "NPS";
+            paymentRequest.terminalName = "Cửa hàng xăng Mễ Trì";
+            paymentRequest.mid = "PLX";
+            paymentRequest.transDatetime = DateTime.Now.ToString("HH:mm:ss dd/MM/yyyy");
+
+           await new Payment().PaymentApi(paymentRequest);
+
+            var dataResp = Payment.paymentResponse;
+            if (dataResp.result == "SUCCESS")
+            {
             //lblLpnVeh.Text = "200.000 VNĐ";
-            lblName.Text = "Thanh toán thành công";
-            lblLpnVeh.Text = "200.000 VNĐ";
-            plnLpn.BackColor = Color.FromArgb(51, 153, 0);
-            btnDoneFuel.Visible = false;
+                lblName.Text = "Thanh toán thành công";
+                lblLpnVeh.Text = $"{FactoryFunction.StringToMoney(paymentRequest.amount, ".")} VNĐ";
+                plnLpn.BackColor = Color.FromArgb(51, 153, 0);
+                btnDoneFuel.Visible = false;
+            }
+            else
+            {
+                lblName.Text = "Thanh toán không thành công";
+                lblLpnVeh.Text = $"{dataResp.message}";
+                plnLpn.BackColor = Color.FromArgb(204, 51, 0);
+                btnDoneFuel.Visible = true;
+            }
+            FactoryFunction.SetLastId(transId + 1);
+
 
 
         }
@@ -159,6 +207,32 @@ namespace UHFReader
             {
                 label1.Text = "";
             }
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            //await new InfoEpc().InfoEpcApi("8930110002060900FFBCEC45");
+            string[] ArEPC = new string[] { "8930110002060900FFBCEC45", "3416214B886A650004773230", };
+            string EPC = ArEPC[new Random().Next(0, 2)];
+
+            //string EPC = "3416214B886A650004773230";
+            if (ListEpc != null && ListEpc.Count == 0)
+            {
+                ListEpc.Add(EPC, 1);
+            }
+            AddValueInDic(ListEpc, EPC, 60);
+        }
+        public void AddValueInDic(Dictionary<string, int> dic, string key, int value)
+        {
+            if (dic.Count > 0)
+            {
+                dic[key] = dic[key] + value;
+            }
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            ListEpc.Clear();
         }
     }
 }

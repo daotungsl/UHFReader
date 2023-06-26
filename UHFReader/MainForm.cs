@@ -15,6 +15,10 @@ using System.IO.Ports;
 using System.Threading;
 using System.Diagnostics;
 using DLL;
+using System.Net.Http;
+using RestSharp;
+using UHFReader.API;
+using Newtonsoft.Json;
 
 namespace UHFReader
 {
@@ -23,7 +27,7 @@ namespace UHFReader
         //全局变量(global variable)
         hComSocket CS;                  //通信句柄结构体(connect handle struct)
         static DateTime timeCheck = DateTime.Now;
-
+        
         int hCom = -1;			        //串口句柄(comm handle)
 
         Socket sockClient = null;		    //网口句柄(TCP/IP handle)
@@ -47,6 +51,9 @@ namespace UHFReader
 
         /*******************************工具函数***************************************/
         //将IP地址型字符串转换为十六进制BYTE
+
+        
+
         public static void DecimalstrToByte(byte[] Buf, string Str)
         {
             int len = Str.Length;
@@ -2989,6 +2996,7 @@ namespace UHFReader
             EPCOperationTime();
         }
 
+
         private void EPC_START_button_Click(object sender, EventArgs e)
         {
             string TempStr = "", TempStrEnglish = "";
@@ -3873,7 +3881,11 @@ namespace UHFReader
 
         }
 
-        
+        private void button1_Click(object sender, EventArgs e)
+        {
+            ViewNotify viewShow = new ViewNotify();
+            viewShow.ShowDialog();
+        }
 
         void IsHexOrNot(KeyPressEventArgs e)
         {
@@ -3894,6 +3906,6 @@ namespace UHFReader
 
        
 
-      
+
     }
 }

@@ -30,20 +30,24 @@
         {
             this.components = new System.ComponentModel.Container();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.label1 = new System.Windows.Forms.Label();
             this.btnDoneFuel = new System.Windows.Forms.Button();
             this.lblName = new System.Windows.Forms.Label();
             this.plnLpn = new System.Windows.Forms.Panel();
             this.lblLpnVeh = new System.Windows.Forms.Label();
             this.timeProgess = new System.Windows.Forms.Timer(this.components);
             this.timeVehOut = new System.Windows.Forms.Timer(this.components);
-            this.label1 = new System.Windows.Forms.Label();
             this.timeEpc = new System.Windows.Forms.Timer(this.components);
+            this.button1 = new System.Windows.Forms.Button();
+            this.button2 = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             this.plnLpn.SuspendLayout();
             this.SuspendLayout();
             // 
             // panel1
             // 
+            this.panel1.Controls.Add(this.button2);
+            this.panel1.Controls.Add(this.button1);
             this.panel1.Controls.Add(this.label1);
             this.panel1.Controls.Add(this.btnDoneFuel);
             this.panel1.Controls.Add(this.lblName);
@@ -52,6 +56,16 @@
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(1880, 1017);
             this.panel1.TabIndex = 0;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 50F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Location = new System.Drawing.Point(604, 890);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(208, 76);
+            this.label1.TabIndex = 6;
+            this.label1.Text = "label1";
             // 
             // btnDoneFuel
             // 
@@ -106,23 +120,37 @@
             // 
             // timeVehOut
             // 
-            this.timeVehOut.Interval = 2000;
+            this.timeVehOut.Interval = 1000;
             this.timeVehOut.Tick += new System.EventHandler(this.timeVehOut_Tick);
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 50F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(604, 890);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(208, 76);
-            this.label1.TabIndex = 6;
-            this.label1.Text = "label1";
             // 
             // timeEpc
             // 
             this.timeEpc.Enabled = true;
             this.timeEpc.Tick += new System.EventHandler(this.timeEpc_Tick);
+            // 
+            // button1
+            // 
+            this.button1.BackColor = System.Drawing.Color.Transparent;
+            this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button1.Location = new System.Drawing.Point(139, 760);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(387, 105);
+            this.button1.TabIndex = 7;
+            this.button1.Text = "Xe vào";
+            this.button1.UseVisualStyleBackColor = false;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
+            // 
+            // button2
+            // 
+            this.button2.BackColor = System.Drawing.Color.Transparent;
+            this.button2.Font = new System.Drawing.Font("Microsoft Sans Serif", 25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button2.Location = new System.Drawing.Point(532, 760);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(387, 105);
+            this.button2.TabIndex = 8;
+            this.button2.Text = "Xe ra";
+            this.button2.UseVisualStyleBackColor = false;
+            this.button2.Click += new System.EventHandler(this.button2_Click);
             // 
             // ViewNotify
             // 
@@ -152,5 +180,7 @@
         private System.Windows.Forms.Timer timeVehOut;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Timer timeEpc;
+        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button button2;
     }
 }
