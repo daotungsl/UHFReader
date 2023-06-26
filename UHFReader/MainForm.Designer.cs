@@ -1769,6 +1769,7 @@
             // 
             // SINGLETAG_groupBox
             // 
+            this.SINGLETAG_groupBox.Controls.Add(this.button1);
             this.SINGLETAG_groupBox.Controls.Add(this.LOCKMEMBANK_comboBox);
             this.SINGLETAG_groupBox.Controls.Add(this.EXECUTE_button);
             this.SINGLETAG_groupBox.Controls.Add(this.VALUE_SINGLE_textBox);
@@ -2778,12 +2779,21 @@
             this.EPC_OperationTime_timer.Interval = 1000;
             this.EPC_OperationTime_timer.Tick += new System.EventHandler(this.EPC_OperationTime_timer_Tick);
             // 
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(553, 81);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(75, 23);
+            this.button1.TabIndex = 9;
+            this.button1.Text = "View";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(913, 712);
-            this.Controls.Add(this.button1);
             this.Controls.Add(this.SWITCH_button);
             this.Controls.Add(this.Language_comboBox);
             this.Controls.Add(this.label16);
