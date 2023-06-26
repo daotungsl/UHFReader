@@ -1125,6 +1125,7 @@
             // 
             // ANTALLDBM_textBox
             // 
+            this.ANTALLDBM_textBox.Enabled = false;
             this.ANTALLDBM_textBox.Location = new System.Drawing.Point(281, 57);
             this.ANTALLDBM_textBox.Name = "ANTALLDBM_textBox";
             this.ANTALLDBM_textBox.Size = new System.Drawing.Size(59, 20);
@@ -2776,16 +2777,6 @@
             // 
             this.EPC_OperationTime_timer.Interval = 1000;
             this.EPC_OperationTime_timer.Tick += new System.EventHandler(this.EPC_OperationTime_timer_Tick);
-            // 
-            // button1
-            // 
-            this.button1.Location = new System.Drawing.Point(822, 6);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(75, 25);
-            this.button1.TabIndex = 37;
-            this.button1.Text = "View";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // MainForm
             // 

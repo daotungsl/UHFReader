@@ -2703,7 +2703,7 @@ namespace UHFReader
 
             DisplayCnt = 0;
             OperationType = "Inventory";
-            SPEED_comboBox.SelectedIndex = 2;
+            SPEED_comboBox.SelectedIndex = 0;
         }
 
         /// <summary>
@@ -3348,7 +3348,7 @@ namespace UHFReader
             }
 
             status = rfid_sp.GEN2_MultiTagInventory(CS, ref TagCount, 0xFF);
-            if (TagCount == 0 && timeCheck > DateTime.Now.AddSeconds(AppSettings.TimeHoldEpcPerSec))
+            if (TagCount == 0 && DateTime.Now > timeCheck.AddSeconds(AppSettings.TimeHoldEpcPerSec))
             {
                 CLEARSHOWDATA_button_Click(null, null);
                 ViewNotify.ListEpc.Clear();
@@ -3868,7 +3868,9 @@ namespace UHFReader
                 ANT2_textBox.Enabled = !ANTALLDBM_checkBox.Checked;
                 ANT3_textBox.Enabled = !ANTALLDBM_checkBox.Checked;
                 ANT4_textBox.Enabled = !ANTALLDBM_checkBox.Checked;
-            
+            ANTALLDBM_textBox.Enabled = ANTALLDBM_checkBox.Checked;
+
+
         }
 
         private void ANTALL_checkBox_CheckedChanged(object sender, EventArgs e)
