@@ -33,6 +33,16 @@ namespace UHFReader
             SetIteamForGlobal();
             new LoginApi().Login();
 
+            if (AppSettings.TestNoEPC == 1 )
+            {
+                button1.Visible = true;
+            }
+            else
+            {
+                button1.Visible = false;
+            }
+            
+
         }
         #region[Set Varible Global]
         private void SetIteamForGlobal()
@@ -83,7 +93,12 @@ namespace UHFReader
                     lblName.Text = "Đang kiểm tra tài khoản \n" + epcInlane.ToUpper();
                     EpcInprogess = epcInlane;
                     timeCheck = DateTime.Now;
-                    button2.Visible = true;
+                    if (AppSettings.TestNoEPC == 1)
+                    {
+                        button2.Visible = true;
+
+                    }
+                    
 
                 }
                 else if (EpcInprogess == "")
