@@ -171,6 +171,7 @@
             this.MULTITAGIDENTIFY_radioButton = new System.Windows.Forms.RadioButton();
             this.EPCGEN2_tabPage = new System.Windows.Forms.TabPage();
             this.SINGLETAG_groupBox = new System.Windows.Forms.GroupBox();
+            this.button1 = new System.Windows.Forms.Button();
             this.LOCKMEMBANK_comboBox = new System.Windows.Forms.ComboBox();
             this.EXECUTE_button = new System.Windows.Forms.Button();
             this.VALUE_SINGLE_textBox = new System.Windows.Forms.TextBox();
@@ -249,7 +250,7 @@
             this.EPC_MultiTagRead_timer = new System.Windows.Forms.Timer(this.components);
             this.EPC_MultiTagWrite_timer = new System.Windows.Forms.Timer(this.components);
             this.EPC_OperationTime_timer = new System.Windows.Forms.Timer(this.components);
-            this.button1 = new System.Windows.Forms.Button();
+            this.cbTest = new System.Windows.Forms.CheckBox();
             this.groupBox1.SuspendLayout();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
@@ -1769,6 +1770,7 @@
             // 
             // SINGLETAG_groupBox
             // 
+            this.SINGLETAG_groupBox.Controls.Add(this.cbTest);
             this.SINGLETAG_groupBox.Controls.Add(this.button1);
             this.SINGLETAG_groupBox.Controls.Add(this.LOCKMEMBANK_comboBox);
             this.SINGLETAG_groupBox.Controls.Add(this.EXECUTE_button);
@@ -1797,6 +1799,16 @@
             this.SINGLETAG_groupBox.TabIndex = 1;
             this.SINGLETAG_groupBox.TabStop = false;
             this.SINGLETAG_groupBox.Text = "单标签操作";
+            // 
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(553, 81);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(75, 23);
+            this.button1.TabIndex = 9;
+            this.button1.Text = "View";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // LOCKMEMBANK_comboBox
             // 
@@ -2779,15 +2791,16 @@
             this.EPC_OperationTime_timer.Interval = 1000;
             this.EPC_OperationTime_timer.Tick += new System.EventHandler(this.EPC_OperationTime_timer_Tick);
             // 
-            // button1
+            // cbTest
             // 
-            this.button1.Location = new System.Drawing.Point(553, 81);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(75, 23);
-            this.button1.TabIndex = 9;
-            this.button1.Text = "View";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
+            this.cbTest.AutoSize = true;
+            this.cbTest.Location = new System.Drawing.Point(553, 58);
+            this.cbTest.Name = "cbTest";
+            this.cbTest.Size = new System.Drawing.Size(74, 17);
+            this.cbTest.TabIndex = 37;
+            this.cbTest.Text = "TestMode";
+            this.cbTest.UseVisualStyleBackColor = true;
+            this.cbTest.CheckedChanged += new System.EventHandler(this.cbTest_CheckedChanged);
             // 
             // MainForm
             // 
@@ -3082,6 +3095,7 @@
         private System.Windows.Forms.CheckBox ANTALL_checkBox;
         private System.Windows.Forms.CheckBox ckBoxView;
         private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.CheckBox cbTest;
     }
 }
 

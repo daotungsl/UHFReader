@@ -22,6 +22,7 @@ namespace UHFReader
         bool isBlink = true;
         int isOut = 0;
         bool isCheckIn;
+        public static bool TestNoEPC;
         static DateTime timeCheck = DateTime.Now;
         int Language;
         RFID_StandardProtocol rfid_sp = new RFID_StandardProtocol();
@@ -33,14 +34,9 @@ namespace UHFReader
             SetIteamForGlobal();
             new LoginApi().Login();
 
-            if (AppSettings.TestNoEPC == 1 )
-            {
-                button1.Visible = true;
-            }
-            else
-            {
-                button1.Visible = false;
-            }
+
+                button1.Visible = TestNoEPC;
+
             
 
         }
@@ -94,7 +90,7 @@ namespace UHFReader
                     lblName.Text = "Đang kiểm tra tài khoản \n" + epcInlane.ToUpper();
                     EpcInprogess = epcInlane;
                     timeCheck = DateTime.Now;
-                    if (AppSettings.TestNoEPC == 1)
+                    if (TestNoEPC)
                     {
                         button2.Visible = true;
 

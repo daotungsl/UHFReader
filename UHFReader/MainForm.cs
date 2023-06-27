@@ -3889,6 +3889,11 @@ namespace UHFReader
             viewShow.ShowDialog();
         }
 
+        private void cbTest_CheckedChanged(object sender, EventArgs e)
+        {
+            ViewNotify.TestNoEPC = cbTest.Checked;
+        }
+
         void IsHexOrNot(KeyPressEventArgs e)
         {
             //如果输入的不是16进制，也不是回车键、Backspace键，则取消该输入
