@@ -29,9 +29,20 @@ namespace UHFReader.API
                 infoEpcResponse = JsonConvert.DeserializeObject<InfoEpcResponse>(response.Content);
                 if (infoEpcResponse != null && infoEpcResponse.status == "1")
                 {
-                    FactoryFunction.SetTextLable(CostGlobal.lblName, "Xin chào " + infoEpcResponse.cust_name);
-                    FactoryFunction.SetTextLable(CostGlobal.lblLpnVeh, infoEpcResponse.plate);
-                    FactoryFunction.SetVisibleButton(CostGlobal.btnDoneFuel, true);
+                    if (infoEpcResponse.avaiable_balance > 0)
+                    {
+                        FactoryFunction.SetTextLable(CostGlobal.lblName, "Xin chào " + infoEpcResponse.cust_name);
+                        FactoryFunction.SetTextLable(CostGlobal.lblLpnVeh, infoEpcResponse.plate);
+                        FactoryFunction.SetVisibleButton(CostGlobal.btnDoneFuel, true);
+                    }
+                    else
+                    {
+                        FactoryFunction.SetTextLable(CostGlobal.lblName, "Xin chào " + infoEpcResponse.cust_name + "\n Số dư tài khoản không đủ." );
+                        FactoryFunction.SetTextLable(CostGlobal.lblLpnVeh, infoEpcResponse.plate);
+                        FactoryFunction.SetColorPanel(CostGlobal.plnLpn, Color.FromArgb(204, 51, 0));
+
+                    }
+
                 }
                 else
                 {

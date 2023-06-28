@@ -15,34 +15,34 @@ namespace UHFReader.API
 
         public async void Login()
         {
-            //var options = new RestClientOptions("https://uat-cityparking-idp.vetc.com.vn")
-            //{
-            //    MaxTimeout = -1,
-            //};
-            //var client = new RestClient(options);
-            //var request = new RestRequest("/auth/realms/plx/protocol/openid-connect/token", Method.Post);
-            //request.AddHeader("Content-Type", "application/x-www-form-urlencoded");
-            //request.AddHeader("Authorization", "Basic cGx4OjExMmNiY2FjLTI1NDEtNGFlNS1iODlhLTVkNDE3N2MzNmY2Yw==");
-            //request.AddParameter("grant_type", "password");
-            //request.AddParameter("username", "admin");
-            //request.AddParameter("password", "admin");
-            //RestResponse response = await client.ExecuteAsync(request);
-            //Console.WriteLine(response.Content);
-            //loginResponse = JsonConvert.DeserializeObject<LoginResponse>(response.Content);
+            var options = new RestClientOptions("https://uat-cityparking-idp.vetc.com.vn")
+            {
+                MaxTimeout = -1,
+            };
+            var client = new RestClient(options);
+            var request = new RestRequest("/auth/realms/plx/protocol/openid-connect/token", Method.Post);
+            request.AddHeader("Content-Type", "application/x-www-form-urlencoded");
+            request.AddHeader("Authorization", "Basic cGx4OjExMmNiY2FjLTI1NDEtNGFlNS1iODlhLTVkNDE3N2MzNmY2Yw==");
+            request.AddParameter("grant_type", "password");
+            request.AddParameter("username", "admin");
+            request.AddParameter("password", "admin");
+            RestResponse response = await client.ExecuteAsync(request);
+            Console.WriteLine(response.Content);
+            loginResponse = JsonConvert.DeserializeObject<LoginResponse>(response.Content);
 
-            var client = new HttpClient();
-            var request = new HttpRequestMessage(HttpMethod.Post, "https://uat-cityparking-idp.vetc.com.vn/auth/realms/plx/protocol/openid-connect/token");
-            request.Headers.Add("Authorization", "Basic cGx4OjExMmNiY2FjLTI1NDEtNGFlNS1iODlhLTVkNDE3N2MzNmY2Yw==");
-            var collection = new List<KeyValuePair<string, string>>();
-            collection.Add(new KeyValuePair<string, string>("grant_type", "password"));
-            collection.Add(new KeyValuePair<string, string>("username", "admin"));
-            collection.Add(new KeyValuePair<string, string>("password", "admin"));
-            var content = new FormUrlEncodedContent(collection);
-            request.Content = content;
-            var response = await client.SendAsync(request);
-            response.EnsureSuccessStatusCode();
-            Console.WriteLine(await response.Content.ReadAsStringAsync());
-
+            //var client = new HttpClient();
+            //var request = new HttpRequestMessage(HttpMethod.Post, "https://uat-cityparking-idp.vetc.com.vn/auth/realms/plx/protocol/openid-connect/token");
+            //request.Headers.Add("Authorization", "Basic cGx4OjExMmNiY2FjLTI1NDEtNGFlNS1iODlhLTVkNDE3N2MzNmY2Yw==");
+            //var collection = new List<KeyValuePair<string, string>>();
+            //collection.Add(new KeyValuePair<string, string>("grant_type", "password"));
+            //collection.Add(new KeyValuePair<string, string>("username", "admin"));
+            //collection.Add(new KeyValuePair<string, string>("password", "admin"));
+            //var content = new FormUrlEncodedContent(collection);
+            //request.Content = content;
+            //var response = await client.SendAsync(request);
+            //response.EnsureSuccessStatusCode();
+            //Console.WriteLine(await response.Content.ReadAsStringAsync());
+            //var data = await response.Content.ReadAsStringAsync();
         }
 
     }
