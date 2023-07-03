@@ -172,7 +172,7 @@ namespace UHFReader
             paymentRequest.etag = epc;
             paymentRequest.plxId = "PLX001";
             paymentRequest.transId = $"PLXTRANS{transId:D3}";
-            paymentRequest.token = "RajX5cI2GLcKJYGjewXhXffYheNfG6465y/Y2H0O4/ZWUKTkh7XiiAdka1eABgvRqNES78+8ftdKDZg/fn/FQ0t9AP5+NJ3aD28U4Mi1ccf/kf7lckrWsWbdt7wUfKNTKoMvarC4mVUMDUTglVxIAzOlti7PCY2JO+KE8bPhmgM=";
+            paymentRequest.token = AppSettings.TokenApi;
             paymentRequest.amount = "200000";
             paymentRequest.terminalId = "NPS";
             paymentRequest.terminalName = "Cửa hàng xăng Mễ Trì";
